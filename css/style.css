@@ -1,0 +1,610 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 960px;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.app-header {
+    padding: 25px 30px;
+    background-color: #fbfbfd;
+    border-bottom: 1px solid #d1d1d6;
+}
+
+.app-title {
+    font-size: 28px; 
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #c7c7cc; 
+    border-radius: 8px; 
+    background-color: #f0f0f0; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#searchInput:focus {
+    border-color: #007aff; 
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
+    outline: none;
+    background-color: #fff;
+}
+
+#checkButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007aff; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#checkButton:hover {
+    background-color: #005ec4; 
+}
+
+.app-main {
+    flex-grow: 1;
+    padding: 20px 30px;
+    overflow-y: auto; 
+}
+
+.table-wrapper {
+    width: 100%;
+    border: 1px solid #e5e5e5; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    background-color: #fff;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+    padding: 12px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+}
+
+#dataTable th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    color: #333;
+    text-transform: none;
+}
+
+#dataTable tbody tr {
+    transition: background-color 0.15s ease-out;
+    cursor: pointer;
+}
+
+#dataTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#dataTable tbody tr.status-signed-in {
+    background-color: #e6ffed;
+    color: #1e753c;
+}
+#dataTable tbody tr.status-signed-in:hover {
+    background-color: #d1f7e0 !important; 
+}
+
+#dataTable tbody tr.status-not-signed-in {
+    background-color: #ffeef0;
+    color: #c92a3a; 
+}
+#dataTable tbody tr.status-not-signed-in:hover {
+    background-color: #ffdce0 !important;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #6e6e73;
+}
+
+/* Footer */
+.app-footer {
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #86868b;
+    border-top: 1px solid #e5e5e5;
+    background-color: #fbfbfd;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.file-input-container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.file-label {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+#excelFile {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #c7c7cc;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+}
+
+.actions-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#downloadButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#downloadButton:hover {
+    background-color: #218838;
+}
+
+.hidden-file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    max-width: 500px;
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007aff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.upload-btn:hover {
+    background-color: #005ec4;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #6e6e73;
+    padding: 6px 10px;
+    background-color: #f5f5f7;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    max-width: 200px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: modal-appear 0.3s ease-out forwards;
+}
+
+@keyframes modal-appear {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 15px 20px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.modal-title {
+    margin: 0;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 60vh;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.modal-footer {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-confirm-btn {
+    color: #007aff;
+    border-left: 1px solid #f0f0f0;
+}
+
+.modal-confirm-btn:hover {
+    background-color: #f5f5f7;
+}
+
+.modal-cancel-btn {
+    color: #555;
+}
+
+.modal-cancel-btn:hover {
+    background-color: #f5f5f7;
+}
+
+.modal-alert .modal-confirm-btn {
+    border-left: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .app-container {
+        border-radius: 12px;
+    }
+    
+    .app-header {
+        padding: 15px;
+    }
+    
+    .app-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .file-input-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .file-label {
+        margin-bottom: 5px;
+    }
+    
+    .custom-file-upload {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .upload-btn {
+        flex-shrink: 0;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .file-name {
+        width: 100%;
+        max-width: none;
+        font-size: 13px;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #searchInput {
+        width: 100%;
+        padding: 8px 12px;
+    }
+    
+    #checkButton {
+        width: 100%;
+        padding: 8px 0;
+    }
+    
+    .app-main {
+        padding: 15px;
+    }
+    
+    .table-wrapper {
+        overflow-x: auto;
+    }
+    
+    #dataTable {
+        min-width: 500px;
+    }
+    
+    #dataTable th, 
+    #dataTable td {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    #downloadButton {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+    
+    .modal-title {
+        font-size: 16px;
+    }
+    
+    .modal-body {
+        padding: 15px;
+        font-size: 14px;
+    }
+    
+    .modal-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .app-title {
+        font-size: 20px;
+    }
+    
+    .app-header, 
+    .app-main {
+        padding: 10px;
+    }
+    
+    #dataTable th, 
+    #dataTable td {
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+    
+    .modal-footer {
+        flex-direction: column-reverse;
+    }
+    
+    .modal-btn {
+        padding: 10px;
+    }
+    
+    .modal-confirm-btn {
+        border-left: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+    
+    .app-container {
+        border-radius: 12px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .app-header {
+        padding: 15px 10px;
+    }
+    
+    .app-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .file-input-container {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .file-label {
+        margin-bottom: 0;
+        text-align: center;
+    }
+    
+    .custom-file-upload {
+        width: 100%;
+        max-width: none;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .upload-btn {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    
+    .file-name {
+        width: 100%;
+        max-width: none;
+        text-align: center;
+        padding: 8px;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    #searchInput {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    #checkButton {
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .app-main {
+        padding: 10px;
+    }
+    
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #dataTable {
+        min-width: 100%;
+        width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header, 
+    .app-main {
+        padding: 8px;
+    }
+    
+    .upload-btn,
+    #checkButton,
+    #downloadButton {
+        padding: 12px 0;
+        font-size: 16px;
+    }
+    
+    .modal-footer {
+        flex-direction: column-reverse;
+    }
+    
+    .modal-btn {
+        padding: 14px;
+        margin-bottom: 1px;
+    }
+    
+    .modal-confirm-btn {
+        border-left: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+}

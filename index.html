@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNNC FA Checkin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">UNNC FA Checkin</h1>
+            <div class="file-input-container">
+                <label for="excelFile" class="file-label">上传签到Excel表:</label>
+                <div class="custom-file-upload">
+                    <input type="file" id="excelFile" accept=".xlsx, .xls" class="hidden-file-input">
+                    <button class="upload-btn" id="customUploadButton">选择文件</button>
+                    <span class="file-name" id="fileName">未选择文件</span>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="输入姓名或学号进行签到...">
+                <button id="checkButton">Check</button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>学号</th>
+                            <th>周边</th>
+                            <th>签到状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+                <p id="noDataMessage" class="no-data-message">请先上传签到Excel表。</p>
+            </div>
+            <div class="actions-container">
+                <button id="downloadButton">下载更新后的数据 (out.xlsx)</button>
+            </div>
+        </main>
+
+        <div id="custom-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">提示</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-cancel" class="modal-btn modal-cancel-btn">取消</button>
+                    <button id="modal-confirm" class="modal-btn modal-confirm-btn">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; Rui 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
