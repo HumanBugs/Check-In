@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('fullscreen-notification');
+    const closeButton = document.getElementById('close-notification');
+    const countdown = document.getElementById('countdown');
+    let timeLeft = 5;
+    
+    const countdownInterval = setInterval(() => {
+        timeLeft--;
+        countdown.textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            closeButton.disabled = false;
+            countdown.style.display = 'none';
+        }
+    }, 1000);
+    
+    closeButton.addEventListener('click', () => {
+        notification.style.display = 'none';
+    });
+
     const excelFileInput = document.getElementById('excelFile');
     const searchInput = document.getElementById('searchInput');
     const checkButton = document.getElementById('checkButton');
@@ -70,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "签到数据");
 
-            // Trigger download
             XLSX.writeFile(workbook, "out.xlsx");
         } catch (err) {
             console.error("Error creating Excel for download:", err);
